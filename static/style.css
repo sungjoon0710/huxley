@@ -1,0 +1,166 @@
+
+
+h1 { font-size: 55px; font-family: 'Noto Serif', serif; font-weight: 700; font-style: italic; letter-spacing: -1px; word-spacing:3px; text-align: center;}
+h2 { font-size: 50px; font-family: 'Noto Serif', serif; font-weight: 700; font-style: italic; letter-spacing: -1px; word-spacing:3px; text-align: center;}
+h3 { font-size: 45px; font-family: 'Noto Serif', serif; font-weight: 700; font-style: italic; letter-spacing: -1px; word-spacing:3px; text-align: center;}
+h4 { font-size: 40px; font-family: 'Noto Serif', serif; font-weight: 700; font-style: italic; letter-spacing: -1px; word-spacing:3px; text-align: center;}
+h5 { font-size: 35px; font-family: 'Noto Serif', serif; font-weight: 700; font-style: italic; letter-spacing: -1px; word-spacing:3px; text-align: center;}
+h6 { font-size: 30px; font-family: 'Noto Serif', serif; font-weight: 700; font-style: italic; letter-spacing: -1px; word-spacing:3px; text-align: center;}
+
+body{
+    /* background: linear-gradient(45deg, #EFE7DF, rgb(255, 132, 31)); */
+    /* background-image: url(./resources/alcantara2.jpg); */
+    font-size: 15px; font-family: 'Noto Serif', serif;
+
+    
+    background: /* linear-gradient(217deg, rgba(255,0,0,.2), rgba(255,0,0,0) 70.71%), */
+            linear-gradient(217deg, rgba(255,41,195,.2), rgba(255,0,0,0) 70.71%),
+            /* linear-gradient(127deg, rgba(0,255,0,.2), rgba(0,255,0,0) 70.71%), */
+            linear-gradient(127deg, rgba(119,198,110,.4), rgba(0,255,0,0) 70.71%),
+            linear-gradient(336deg, rgba(17,112,255,.4), rgba(0,0,255,0) 70.71%);
+            /* linear-gradient(336deg, rgba(0,0,255,.2), rgba(0,0,255,0) 70.71%); */
+    background-attachment: fixed;
+
+
+    
+}
+
+p{
+    font-size: 15px; font-family: 'Noto Serif', serif; text-align: center;
+}
+/* color: #1F2D16 */
+
+img{
+    display: block;
+    width: 60%;
+    margin: auto;
+    overflow:hidden;
+    border-radius: 15px;
+}
+
+.bordered-box{
+    border-radius: 15px;
+    border-style:outset;
+    border-color: rgba(60,60,60,0.3);
+    border-width: 6px;
+}
+
+
+
+input[type="button"]{
+    background-color:rgba(240, 248, 255, 0.4); font-family: 'Noto Serif', serif;
+    border-radius: 5px; border-style:none;
+    margin:3px;
+}
+
+input[type="button"]:hover{
+  /* background-color: rgba(240, 248, 255, 1) */
+  animation: hover 0.5s forwards;
+} 
+
+
+input[type="text"]{
+    background-color:aliceblue; font-family: 'Noto Serif', serif;
+    border-radius: 5px; border-style:none;
+    margin:3px; padding-left: 5px;
+    /* z-index: 0 !important; */
+}
+
+input[type="date"]{
+    background-color:aliceblue; font-family: 'Noto Serif', serif;
+    border-radius: 5px; border-style:none;
+    margin:3px; min-width : 80px;
+}
+
+
+input[type="password"]{
+    background-color:aliceblue; font-family: 'Noto Serif', serif;
+    border-radius: 5px; border-style:none;
+    margin:3px;
+}
+
+input[type="submit"]{
+    background-color:rgba(240, 248, 255, 0.4); font-family: 'Noto Serif', serif;
+    border-radius: 5px; border-style:none;
+    margin:3px;
+}
+
+input[type="submit"]:hover{
+    animation: hover 0.5s forwards;
+}
+
+
+
+input[type="file"]{
+    background-color:transparent; font-family: 'Noto Serif', serif;
+    border-radius: 5px; border-style:none;
+    margin:3px;
+}
+
+
+input::file-selector-button{
+    background-color:rgba(240, 248, 255, 0.4); font-family: 'Noto Serif', serif;
+    border-radius: 5px; border-style:none;
+    margin:3px;
+}
+
+
+
+button[type = "submit"]{
+    background-color:rgba(240, 248, 255, 0.4); font-family: 'Noto Serif', serif;
+    border-radius: 5px; border-style:none;
+    margin:3px;
+}
+button[type = "submit"]:hover{
+    animation: hover 0.5s forwards;
+}
+
+textarea{
+    background-color:aliceblue;
+    max-width: 100%;
+    min-height: 100px;
+    min-width: 300px;
+    border-radius: 10px;
+    padding: 5px;
+    border-color: rgba(60,60,60,0);
+    background-color:aliceblue; font-family: 'Noto Serif', serif;
+    border-radius: 5px; border-style:none;
+    margin:3px; padding-left: 5px;
+}
+
+.text-wrapper{
+    margin: auto;
+    background-color:rgba(240, 248, 255, 0.3);
+    max-width: 80%;
+    border-radius: 10px;
+    padding: 15px;
+    border-color: rgba(60,60,60,0);
+}
+
+
+@keyframes hover{
+    from{
+
+    }
+
+    to{
+        background-color: rgba(240, 248, 255, 1);
+        transform: scale(1.1);
+        margin: 4px;
+
+    }
+
+}
+
+@keyframes hover_no_scale{
+    from{
+
+    }
+
+    to{
+        background-color: rgba(240, 248, 255, 1);
+        margin: 4px;
+
+    }
+
+}

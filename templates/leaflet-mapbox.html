@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mapbox + Leaflet Example</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css' rel='stylesheet' />
+    <link rel="icon" href="/resources/favicon.ico"> 
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+     <div id="map" style="height: 500px; width:1000px "></div>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <script>
+        var map = L.map('map').setView([51, -0.09], 9);
+
+        // Replace 'your-mapbox-style-id' and 'your-mapbox-public-access-token' with your Mapbox style ID and public access token
+        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+    attribution: '© <a href="https://www.mapbox.com/about/maps/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> <strong><a href="https://www.mapbox.com/map-feedback/" target="_blank">Improve this map</a></strong>',
+    tileSize: 512,
+    maxZoom: 25,
+    zoomOffset: -1,
+    //id: 'mapbox/streets-v12',
+    id: 'sungjoon0710/clovou8c5008k01r6dctg7z96',
+    // finally figured this shit out. you need to include the guy who made it in the id
+    accessToken: 'pk.eyJ1Ijoic3VuZ2pvb24wNzEwIiwiYSI6ImNsb3Zya3h5bzAydG4ya21sdWtvdHVwNm0ifQ.uGAcIVO1UtGR1yw8s56oUg'
+}).addTo(map);
+
+
+
+
+        L.marker([51, -0.09]).addTo(map)
+            .bindPopup('joe mama lives here.')
+            .openPopup();
+
+        L.marker([51.5, -0.096]).addTo(map)
+            .bindPopup('joe daddy lives here.')
+            .openPopup();
+
+
+
+
+    </script> 
+
+
+<!-- <div id='map' style='width: 400px; height: 300px;'></div>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1Ijoic3VuZ2pvb24wNzEwIiwiYSI6ImNsb3Zya3h5bzAydG4ya21sdWtvdHVwNm0ifQ.uGAcIVO1UtGR1yw8s56oUg';
+const map = new mapboxgl.Map({
+container: 'map', // container ID
+style: 'mapbox://styles/sungjoon0710/clovou8c5008k01r6dctg7z96', // style URL
+center: [-74.5, 40], // starting position [lng, lat]
+zoom: 9, // starting zoom
+});
+</script> -->
+
+</body>
+</html>

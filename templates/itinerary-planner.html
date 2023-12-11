@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title }}</title>
+  <!-- Include Mapbox GL JS library -->
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="icon" href="/resources/favicon.ico"> 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  
+  <style>
+    #map{
+      border-radius: 15px;
+      border-style:outset;
+      border-color: rgba(60,60,60,0.3);
+      border-width: 6px;
+       
+    }
+
+  </style>
+</head>
+<body>
+
+  <div>
+    <p style ="text-align:end ;"> <input type="button" value="Home" onclick="location.href = './index'"> </p>
+   
+  </div>
+  <center>
+  <div id = "map_wrapper" style = "width: 50%; overflow:hidden; position: relative">
+    <div id="map" style=" height:400px;"></div>
+    <div id = "destination_search_wrapper" style = "position: absolute; bottom: -1%; right: 45%">
+      <p><input type="text" id="destinationInput" placeholder="Search on map"> 
+      <button type="submit" onclick="searchDestination()">Search</button> </p>
+    </div>
+  </div>
+  </center>
+
+
+
+    <form action="/itinerary-planner" method="post">
+        <p>Your destination: <input type="text" name = "destination_input" id = "destination_input" placeholder="Enter destination again"> 
+        
+  
+        <p>Duration of your stay: <input type="text" name = "destination_time" id="destination_time" placeholder="how much time?"> 
+        
+        <p>
+            Your travel style: <label for="foodie">Foodie</label><input type="radio" name="travel_style" value="foodie" id="foodie" checked />
+                <label for="artsy">Artsy</label><input type="radio" name="travel_style" value="artsy" id="artsy" />
+                <label for="adventurer">Adventurer</label><input type="radio" name="travel_style" value="adventurer" id="adventurer" />
+
+                <label for="golfer">Golfer</label><input type="radio" name="travel_style" value="golfer" id="golfer" />
+                
+        </p>
+        
+
+
+    
+        <p><button type="submit">Generate Itinerary!</button></p>
+    </form>
+
+
+    <script>
+        // Set your Mapbox access token here
+        mapboxgl.accessToken = 'pk.eyJ1Ijoic3VuZ2pvb24wNzEwIiwiYSI6ImNsb3Zya3h5bzAydG4ya21sdWtvdHVwNm0ifQ.uGAcIVO1UtGR1yw8s56oUg';
+    
+        // Create a map
+        const map = new mapboxgl.Map({
+          container: 'map',
+            style: 'mapbox://styles/mapbox/outdoors-v12', // Choose a map style
+          //style: 'mapbox://styles/sungjoon0710/clox4svde00a701r70ynx3lun', 
+          //style:'mapbox://styles/sungjoon0710/clovou8c5008k01r6dctg7z96'
+          center: [-73.985130, 40.758896], // Initial map center coordinates
+          zoom: 10 // Initial map zoom level
+        });
+    
+        // Function to perform destination search
+        function searchDestination() {
+          const destinationInput = document.getElementById('destinationInput').value;
+          // using JS to pre-populate input field. 
+          document.getElementById('destination_input').setAttribute('value', destinationInput);
+    
+          // Use Mapbox Geocoding API to get the coordinates of the destination
+          fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(destinationInput)}.json?access_token=${mapboxgl.accessToken}`)
+            .then(response => response.json())
+            .then(data => {
+              // Get the coordinates of the first result
+              const coordinates = data.features[0].geometry.coordinates;
+    
+              // Update the map center to the destination coordinates
+              map.flyTo({
+                center: coordinates,
+                zoom: 12 // You can adjust the zoom level as needed
+              });
+    
+              // Add a marker at the destination coordinates
+              new mapboxgl.Marker()
+                .setLngLat(coordinates)
+                .addTo(map);
+            })
+            .catch(error => console.error('Error:', error));
+        }
+      </script>
+
+
+
+
+
+</body>
+</html>

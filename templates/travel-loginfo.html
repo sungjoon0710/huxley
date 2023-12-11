@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Itinerary!</title>
+
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="icon" href="/resources/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <p style ="text-align:end ;"> <input type="button" value="Home" onclick="location.href = './index'"> </p>
+    <h2 style = "line-height: 5px;">Your {{new_log.destination_input}} travel log</h2>
+    <center><strong>{{new_log.log_start_date}} ~ {{new_log.log_end_date}}</strong></center>
+
+    <div class = "text-wrapper">
+
+        <div><p style="margin-left: 25px;padding-top: 10px;"> 
+            {{new_log.log_experience}}
+            </p>
+        </div>
+
+        
+    </div>
+    
+    
+
+    
+</body>
+</html>

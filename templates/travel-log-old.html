@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="icon" href="/resources/favicon.ico"> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <style>
+        
+    
+        iframe {
+          width: 100%;
+          height: 575px;
+          border: none; /* Remove default border */
+          
+        }
+      
+        
+        div{
+            margin: auto;
+        }
+        .container{
+            margin: auto !important; 
+        }
+        
+        
+      </style>
+
+</head>
+<body>
+
+    <header>
+        <div>
+          <p style ="text-align:end ;"> <input type="button" value="Home" onclick="location.href = './index'"> </p>
+        </div>
+
+        <h2>Travel Log!</h2>
+        <!-- <p><iframe src="./mapbox-destination.html" name="iframe"></iframe></p> -->
+        
+        <div class="container">
+            
+            <iframe src="./mapbox-destination"  ></iframe>
+        </div>
+        
+
+    </header>
+
+
+ 
+    <div id="content">
+        <center>
+        <form action="./regist" method="post">
+            <!-- <input type="hidden" name="hdd" value="서버로 전달될 값"> -->
+            <!-- <p> <input type = "hidden" maxlength = "20" placeholder = "Where did you go?" name= "destination" id="destination" required> </p> -->
+            
+            <p>Which dates did you travel? <input type = "date" name = "travel-start-date" id "travel-start-date"> ~ <input type = "date" name = "travel-end-date" id "travel-end-date"> </p>
+            <p><textarea name="content" id="content" cols="90" rows="15" placeholder = " Tell us about your experience here!"></textarea></p>
+            <p>Upload Images! <input type="file" name="file"></p>
+
+            <input type="submit" value="Submit">
+        </center>
+
+
+    </form>
+    </div>    
+
+    </div>
+
+
+
+
+
+</body>
+</html>

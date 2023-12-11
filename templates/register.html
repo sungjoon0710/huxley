@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="icon" href="/resources/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+    <header>
+
+        <div>
+            <p style ="text-align:end ;"> <input type="button" value="Home" onclick="location.href = './index'"> </p>
+           
+        </div>
+        <h2>Register!</h2>
+
+    </header>
+
+
+    <form action="/register" method="post">
+        
+        <!-- <p> <input type = "hidden" maxlength = "20" placeholder = "Where did you go?" name= "destination" id="destination" required> </p> -->
+
+        <p> Your Huxley ID: <input type = "text" maxlength= "20" placeholder = "20 characters or less" name= "userid" id= "userid" required></p>
+
+        <p> Password: <input type="password" maxlength="20" placeholder="20 characters or less" name="userpw" id="userpw" required></p>
+
+        
+        <p>Travel Experience</p>
+        <p><i><sup>just got my passport </sup></i><input type="range" min="0" max="10" value="3" step = "1" style="width: 20%" name = "userexp" id = "userexp"> <sup><i>backpacker around the globe</sup></i></p>
+        
+        
+        <!-- <p> <input type="submit" value="register"> </p> -->
+        <p><button type="submit">Register</button></p>
+
+    </form>
+        <p><sub><i>by clicking Register, you are agreeing to our <u><a href="./privacy-policy">Privacy Policy</a></u></i></sub></p>
+    
+    
+</body>
+</html>

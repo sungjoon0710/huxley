@@ -122,9 +122,9 @@ async def add_log(request: Request, destination_input: str = Form(...), log_star
 
 
 
-@app.get("/mapbox-destination")
+@app.get("/destination-map")
 async def read_destination(request: Request):
-    return templates.TemplateResponse("mapbox-destination.html", {"request": request, "title": "Destination"})
+    return templates.TemplateResponse("destination-map.html", {"request": request, "title": "Destination"})
 
 @app.get("/privacy-policy")
 async def read_privacy(request: Request):

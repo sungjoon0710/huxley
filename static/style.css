@@ -60,8 +60,8 @@ img{
     background-color:rgba(240, 248, 255, 0.3);
     
     border-radius: 10px;
-    /* padding-top: 15px;
-    padding-bottom: 15px; */
+    padding-top: 15px;
+    padding-bottom: 15px;
     border-color: rgba(60,60,60,0); 
     text-align: center;
 }

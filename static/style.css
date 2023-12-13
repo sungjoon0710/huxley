@@ -88,7 +88,14 @@ input[type="text"]{
     border-radius: 5px; border-style:none;
     margin:3px; padding-left: 5px;
     /* z-index: 0 !important; */
+
 }
+
+input[type="text"]:hover{
+    /* background-color: rgba(240, 248, 255, 1) */
+    animation: hover_less_scale 0.5s forwards;
+  } 
+  
 
 input[type="date"]{
     background-color:aliceblue; font-family: 'Noto Serif', serif;
@@ -176,14 +183,14 @@ textarea{
 
 }
 
-@keyframes hover_no_scale{
+@keyframes hover_less_scale{
     from{
 
     }
 
     to{
         background-color: rgba(240, 248, 255, 1);
-        margin: 4px;
+        transform: scale(1.05);
 
     }
 

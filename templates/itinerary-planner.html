@@ -31,9 +31,9 @@
    
   </div>
   <center>
-  <div id = "map_wrapper" style = "width: 50%; overflow:hidden; position: relative">
-    <div id="map" style=" height:400px;"></div>
-    <div id = "destination_search_wrapper" style = "position: absolute; bottom: -1%; right: 45%">
+  <div id = "map_wrapper" style = "width: 80%; overflow:hidden; position: relative">
+    <div id="map" style=" height:600px;"></div>
+    <div id = "destination_search_wrapper" style = "position: absolute; bottom: 1.1%; right: 44%">
       <p><input type="text" id="destinationInput" placeholder="Search on map"> 
       <button type="submit" onclick="searchDestination()">Search</button> </p>
     </div>
@@ -43,17 +43,17 @@
 
 
     <form action="/itinerary-planner" method="post">
-        <p>Your destination: <input type="text" name = "destination_input" id = "destination_input" placeholder="Enter destination again"> 
+        <p>Your destination: <input type="text" name = "destination_input" id = "destination_input" placeholder="where to?"> 
         
   
-        <p>Duration of your stay: <input type="text" name = "destination_time" id="destination_time" placeholder="how much time?"> 
+        <p>Duration of your stay: <input type="text" name = "destination_time" id="destination_time" placeholder="how many days?"> 
         
         <p>
-            Your travel style: <label for="foodie">Foodie</label><input type="radio" name="travel_style" value="foodie" id="foodie" checked />
-                <label for="artsy">Artsy</label><input type="radio" name="travel_style" value="artsy" id="artsy" />
-                <label for="adventurer">Adventurer</label><input type="radio" name="travel_style" value="adventurer" id="adventurer" />
+            Your travel style: &nbsp; <label for="foodie">Foodie </label><input type="radio" name="travel_style" value="foodie" id="foodie" checked />  &nbsp;&nbsp;&nbsp;
+                <label for="artsy">Art Lover </label><input type="radio" name="travel_style" value="artsy" id="artsy" />&nbsp;&nbsp;&nbsp;
+                <label for="adventurer">Adventurer </label><input type="radio" name="travel_style" value="adventurer" id="adventurer" />&nbsp;&nbsp;&nbsp;
 
-                <label for="golfer">Golfer</label><input type="radio" name="travel_style" value="golfer" id="golfer" />
+                <label for="golfer">Golfer </label><input type="radio" name="travel_style" value="golfer" id="golfer" />
                 
         </p>
         
@@ -72,7 +72,7 @@
         const map = new mapboxgl.Map({
           container: 'map',
             // style: 'mapbox://styles/mapbox/outdoors-v12', // Choose a map style
-          style: 'mapbox://styles/sungjoon0710/clovou8c5008k01r6dctg7z96',
+            style: 'mapbox://styles/sungjoon0710/clovou8c5008k01r6dctg7z96',
           //style:'mapbox://styles/sungjoon0710/clovou8c5008k01r6dctg7z96'
           center: [-73.985130, 40.758896], // Initial map center coordinates
           zoom: 10 // Initial map zoom level

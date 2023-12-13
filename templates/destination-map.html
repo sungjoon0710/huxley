@@ -148,8 +148,6 @@
       const textArea = document.querySelector('.bordered-fox');
       textArea.innerHTML = '';  // Clear existing content
 
-      itin_day1 = itinerary['day_1'];
-      console.log(itin_day1);
 
       console.log(itinerary);
       for (const day in itinerary) {
@@ -159,7 +157,13 @@
         const p = document.createElement('p');
 
 
-        p.textContent = itinerary[day];
+        let dayText = itinerary[day].replace(/\n/g, '<br>');
+
+        // Set the innerHTML of the paragraph to include <br> tags
+        p.innerHTML = dayText;
+        // p.textContent = itinerary[day];
+
+        
         textArea.appendChild(p); // Append the paragraph to the textarea div
     }
 }

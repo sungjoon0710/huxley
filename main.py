@@ -7,6 +7,8 @@ import certifi
 from pydantic import BaseModel
 import openai
 import time
+from fastapi.middleware.cors import CORSMiddleware
+
 
 
 
@@ -44,6 +46,15 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 url ="mongodb+srv://sungjoon0710:0R41dhrwNj8cOTsY@cluster0.hplaa84.mongodb.net/?retryWrites=true&w=majority"
 ca = certifi.where()
 client = MongoClient(url, tlsCAFile=ca)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allows all origins
+    allow_credentials=True,
+    allow_methods=["*"],  # Allows all methods
+    allow_headers=["*"],  # Allows all headers
+)
+
 
 
 print(client)
@@ -203,6 +214,7 @@ class ItinGenerator:
 @app.get("/itinerary-planner")
 async def itin_planner(request: Request):
     return templates.TemplateResponse("itinerary-planner.html", {"request": request})
+
 @app.post('/itinerary-planner')
 async def generate_itinerary(request: Request, destination_input: str = Form(...), destination_time: str = Form(...), travel_style: str = Form(...)):
     #comes into the post method in JSON format from the streamlit file, as defined by basemodel above
@@ -247,5 +259,19 @@ async def itin_parser(itin: str):
 
 
 
+# class Item(BaseModel):  # Pydantic model to structure data
+#     name: str
+#     description: str
 
+@app.get("/itin_from_mongo", response_model = dict)
+async def read_itin_from_mongo(destination_input: str):
+    
+    sample_itin = {"destination_input" :destination_input, "destination_time": "none", "itin": "none", "travel_style" : "none"}
+
+    if collection2.find_one({"destination_input": destination_input},{"_id": 0}):
+
+        itin_from_mongo = collection2.find_one({"destination_input": destination_input},{"_id": 0})  
+        return itin_from_mongo
+        # Fetch data from MongoDB
+    return sample_itin;
 

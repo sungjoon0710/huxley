@@ -27,10 +27,10 @@
 </head>
 <body>
 
-  <p style ="text-align:end ;"> <input type="button" value="Home" onclick="location.href = './index'"> </p>
+  <p style ="text-align:end ;"> <input type="button" value="Home" onclick="location.href = '/index'"> </p>
   <center><div id="map" style="width: 80%; height:500px; overflow:hidden"></div>
   
-  <p>Your destination: <input type="text" id="destination_input" placeholder="Enter destination"> 
+  <p>Your destination: <input type="text" id="destination_input" value = "{{destination_input}}" placeholder="Enter destination"> 
     <button type = "submit" onclick="searchDestination()">Search</button> </p>
 
     <div class = "bordered-fox">
@@ -47,6 +47,8 @@
   <script>
   // Set your Mapbox access token here
   mapboxgl.accessToken = 'pk.eyJ1Ijoic3VuZ2pvb24wNzEwIiwiYSI6ImNsb3Zya3h5bzAydG4ya21sdWtvdHVwNm0ifQ.uGAcIVO1UtGR1yw8s56oUg';
+
+  // this.destination_input = destination_input;
 
   // Create a map
   const map = new mapboxgl.Map({
@@ -134,12 +136,6 @@
 
 
 
-
-
-
-
-    
-
     // document.addEventListener('DOMContentLoaded', (event) => {itin_from_mongo();});
 
     function displayItinerary(itinerary){
@@ -168,7 +164,34 @@
     }
 }
 
+// Function to center the map on a destination
+async function centerMapOnDestination(destination) {
+    fetch(`https://api.mapbox.com/geocoding/v5/mapbox.places/${encodeURIComponent(destination)}.json?access_token=${mapboxgl.accessToken}`)
+      .then(response => response.json())
+      .then(data => {
+        // Get the coordinates of the first result
+        const coordinates = data.features[0].geometry.coordinates;
 
+        // Update the map center to the destination coordinates
+        map.flyTo({
+          center: coordinates,
+          zoom: 12 // Adjust the zoom level as needed
+        });
+
+        // Add a marker at the destination coordinates
+        new mapboxgl.Marker()
+          .setLngLat(coordinates)
+          .addTo(map);
+      })
+      .catch(error => console.error('Error:', error));
+  }
+
+  // ... [rest of your existing code] ...
+
+  // Call the function to center the map on the destination as the page loads
+  document.addEventListener('DOMContentLoaded', (event) => {
+    centerMapOnDestination("{{ destination_input }}");
+  });
 
 
   </script>

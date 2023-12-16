@@ -53,6 +53,8 @@
                 <label for="artsy">Art Lover </label><input type="radio" name="travel_style" value="artsy" id="artsy" />&nbsp;&nbsp;&nbsp;
                 <label for="adventurer">Adventurer </label><input type="radio" name="travel_style" value="adventurer" id="adventurer" />&nbsp;&nbsp;&nbsp;
 
+                <label for="shopper">Shopper </label><input type="radio" name="travel_style" value="shopper" id="shopper" />&nbsp;&nbsp;&nbsp;
+
                 <label for="golfer">Golfer </label><input type="radio" name="travel_style" value="golfer" id="golfer" />
                 
         </p>
@@ -102,7 +104,7 @@
                 .setLngLat(coordinates)
                 .addTo(map);
             })
-            .catch(error => console.error('Error:', error));
+          .catch(error => console.error('Error:', error));
         }
       </script>
 

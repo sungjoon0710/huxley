@@ -8,6 +8,7 @@ from pydantic import BaseModel
 import openai
 import time
 from fastapi.middleware.cors import CORSMiddleware
+import json
 
 
 
@@ -72,8 +73,26 @@ print(f"collection 2 itin obtained. \n")
 collection3 = database['logs']
 print(f"collection 3 logs obtained. \n")
 
-collection4 = database['sessions']
-print(f"collection 4 sessions obtained. \n")
+collection4 = database['images']
+print(f"collection 4 images obtained. \n")
+
+
+# def image_adder():
+#     with open("static/destination_images.txt", "r") as f:
+#         dest = f.readlines()
+
+#     for line in dest:
+#         line = line.strip()
+#         # Parse the line (formatted as a JSON string) into a Python dictionary
+#         try:
+#             document = json.loads(line)
+#             # print (document)
+#             collection4.insert_one(document)
+#             time.sleep(1)
+#         except json.JSONDecodeError as e:
+#             print(f"Error decoding JSON for line: {line}. Error: {e}")
+
+# image_adder()
 
 
 ##CHATGPT TERRITORY#####
@@ -125,6 +144,14 @@ async def add_log(request: Request, destination_input: str = Form(...), log_star
 @app.get("/destination-map")
 async def read_destination(request: Request):
     return templates.TemplateResponse("destination-map.html", {"request": request, "title": "Destination"})
+
+@app.get("/destination-map/{destination_input}")
+async def destination_map(request: Request, destination_input: str):
+    return templates.TemplateResponse("destination-map.html", {"request": request, "destination_input": destination_input})
+
+
+
+
 
 @app.get("/privacy-policy")
 async def read_privacy(request: Request):

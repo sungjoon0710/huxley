@@ -13,8 +13,6 @@ import json
 
 
 
-openai.api_key = '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'
-
 class user(BaseModel):
     userid: str
     userpw: str
